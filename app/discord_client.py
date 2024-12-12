@@ -13,6 +13,8 @@ class DiscordClient:
 
     def __init__(self):
         self._webhook_url = os.environ["DISCORD_WEBHOOK_URL"]
+        self.avatar_url = os.environ["AVATAR_URL"]
+        self.content = os.environ["CONTENT"]
 
     def send_information_to_discord(
         self,
@@ -27,8 +29,9 @@ class DiscordClient:
                 url=f"{self._webhook_url}?wait=true",
                 json={
                     "username": "Randy",
-                    "avatar_url": "https://i.imgur.com/DBOuwjx.png",
-                    "content": f"@Notified {stream.user_name} went live! This guy bald as hell!!",
+                    # "avatar_url": "https://i.imgur.com/DBOuwjx.png",
+                    "avatar_url": f"{self.avatar_url}",
+                    "content": f"{self.content}",
                     "embeds": [
                         {
                             "title": stream.title,
