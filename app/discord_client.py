@@ -26,9 +26,9 @@ class DiscordClient:
             response = requests.post(
                 url=f"{self._webhook_url}?wait=true",
                 json={
-                    "username": "Oak Tree",
+                    "username": "Randy",
                     "avatar_url": "https://i.imgur.com/DBOuwjx.png",
-                    "content": f"@everyone {stream.user_name} went live!",
+                    "content": f"@Notified {stream.user_name} went live! This guy bald as hell!!",
                     "embeds": [
                         {
                             "title": stream.title,
