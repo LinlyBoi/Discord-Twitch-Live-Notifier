@@ -32,7 +32,7 @@ class DiscordClient:
                 json={
                     "username": f"{self.user}",
                     "avatar_url": f"{self.avatar_url}",
-                    "content": f"<@&{self.role_id} {stream.user_name} {self.content}",
+                    "content": f"<@&{self.role_id}> {stream.user_name} {self.content}",
                     "embeds": [
                         {
                             "title": stream.title,
