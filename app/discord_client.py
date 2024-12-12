@@ -12,9 +12,11 @@ class DiscordClient:
     notification_msg_id: str = ""
 
     def __init__(self):
+        self.user = os.environ["USER"]
         self._webhook_url = os.environ["DISCORD_WEBHOOK_URL"]
         self.avatar_url = os.environ["AVATAR_URL"]
         self.content = os.environ["CONTENT"]
+        self.role_id = os.environ["ROLE_ID"]
 
     def send_information_to_discord(
         self,
@@ -28,10 +30,9 @@ class DiscordClient:
             response = requests.post(
                 url=f"{self._webhook_url}?wait=true",
                 json={
-                    "username": "Randy",
-                    # "avatar_url": "https://i.imgur.com/DBOuwjx.png",
+                    "username": f"{self.user}",
                     "avatar_url": f"{self.avatar_url}",
-                    "content": f"{self.content}",
+                    "content": f"<@&{self.role_id} {stream.user_name} {self.content}",
                     "embeds": [
                         {
                             "title": stream.title,
